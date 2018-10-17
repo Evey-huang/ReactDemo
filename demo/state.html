@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script src="../build/browser.min.js"></script>
+	</head>
+    <body>
+			<div id="example"></div>
+			<script type="text/babel">
+				class Clock extends React.Component {
+					constructor(props) {
+						super(props);
+						this.state = {date: new Date()};
+					}
+					// componentDidMount()和componentWillUnmount()这些方法被称作生命周期钩子
+					// 每当Clock组件第一次加载到DOM中的时候，我们都想生成定时器，这在React中被称为挂载
+					componentDidMount() {
+						this.timerID = setInterval(
+							() => this.tick(),
+							1000
+						);
+					}
+					// 每当Clock生成的这个DOM被移除时，我们也会想要清除定时器，这在React中称为卸载
+					componentWillUnmount() {
+						clearInterval(this.timerID);
+					}
+					// 使用this.setState()来更新组件局部状态
+					tick() {
+						this.setState({
+							date: new Date()
+						});
+					}
+
+					render() {
+						return (
+							<div>
+								<h1>Hello, world!</h1>
+								<h1>Hello, Evey!</h1>
+								<h2>It is {this.state.date.toLocaleTimeString()}</h2>
+							</div>
+						);
+					}
+				}
+				ReactDOM.render(
+					<Clock />,
+					document.getElementById('example')
+				)
+			</script>
+    </body>
+</html>

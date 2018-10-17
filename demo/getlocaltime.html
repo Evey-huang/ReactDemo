@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script src="../build/browser.min.js"></script>
+	</head>
+    <body>
+			<div id="example"></div>
+			<script type="text/babel">
+
+			function tick() {
+				const element = (
+					<div>
+						<h1>Hello, world!</h1>
+						<h2>It is {new Date().toLocaleTimeString()}.</h2>
+					</div>
+				);
+				ReactDOM.render(
+					element,
+					document.getElementById('example')
+				);
+			}
+// 通过setInterval方法每秒钟调用一次ReactDOM.render()，以此更新元素渲染
+// React DOM 首先会比较元素内容先后的不同，而在渲染过程中只会更新改变了的部分。即这里只会更新时间
+			setInterval(tick, 1000);
+
+			</script>
+    </body>
+</html>

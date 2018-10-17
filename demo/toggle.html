@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="../build/react.js"></script>
+		<script src="../build/react-dom.js"></script>
+		<script src="../build/browser.min.js"></script>
+	</head>
+    <body>
+			<div id="example"></div>
+			<script type="text/babel">
+				class Toggle extends React.Component {
+					constructor(props) {
+						super(props);
+						this.state = {isToggleOn: true};
+						// 类的方法默认是不会绑定this的，如果忘记绑定this.handleClick并把它传入onClick，当你调用这个函数时this的值会是undefined
+						this.handleClick = this.handleClick.bind(this);
+					}
+
+					handleClick() {
+						this.setState(prevState => ({
+							isToggleOn: !prevState.isToggleOn
+						}));
+					}
+
+					render() {
+						return (
+							// 如果你没有在方法后面添加()，例如onClick={this.handleClick}，应该为这个方法绑定this
+							<button onClick={this.handleClick}>
+								{this.state.isToggleOn ? 'ON' : 'OFF'}
+							</button>
+						);
+					}
+				}
+
+				ReactDOM.render(
+					<Toggle />,
+					document.getElementById('example')
+				);
+			</script>
+    </body>
+</html>
