@@ -8,30 +8,29 @@
     <body>
 			<div id="example"></div>
 			<script type="text/babel">
-
 				// JSX
 				function formatName(user) {
-						return user.firstName + '' + user.lastName;
+					return user.firstName + '' + user.lastName;
 				}
 				function getGreeting(user) {
-						if(user) {
-								return <h1>Hello, {formatName(user)}!</h1>;
-						}
-						return <h1>Hello, Stanger.</h1>
+					if(user) {
+						return <h1>Hello, {formatName(user)}!</h1>;
+					}
+					return <h1>Hello, Stanger.</h1>
 				}
 
 				const user = {
-						firstName: 'Harper',
-						lastName: ' Perez'
+					firstName: 'Harper',
+					lastName: ' Perez'
 				};
 				const element = (
-						// getGreeting(),
-						getGreeting(user)
+					// getGreeting(),
+					getGreeting(user)
 				);
 
 				ReactDOM.render(
-						element,
-						document.getElementById('example')
+					element,
+					document.getElementById('example')
 				);
 			</script>
     </body>
